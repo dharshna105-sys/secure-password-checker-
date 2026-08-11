@@ -1,0 +1,671 @@
+/* =========================================================
+   PASSWORD STRENGTH CHECKER
+   Professional Cybersecurity UI
+   ========================================================= */
+
+
+/* =========================================================
+   1. GLOBAL RESET
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #02050a;
+    color: #ffffff;
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   2. MAIN PAGE
+   ========================================================= */
+
+.page-container {
+    position: relative;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 40px 20px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(255, 0, 0, 0.08),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #010205 0%,
+            #03070d 50%,
+            #010205 100%
+        );
+}
+
+
+/* =========================================================
+   3. BACKGROUND CYBER DECORATION
+   ========================================================= */
+
+.background-decoration {
+    position: absolute;
+    width: 420px;
+    height: 420px;
+
+    opacity: 0.25;
+    pointer-events: none;
+}
+
+.left-decoration {
+    left: -220px;
+    top: 20%;
+
+    border: 1px solid rgba(255, 0, 0, 0.4);
+
+    box-shadow:
+        100px 80px 0 -99px #ff0000,
+        160px 150px 0 -99px #ff0000,
+        220px 220px 0 -99px #ff0000;
+}
+
+.right-decoration {
+    right: -220px;
+    bottom: 10%;
+
+    border: 1px solid rgba(255, 0, 0, 0.4);
+
+    box-shadow:
+        -100px -80px 0 -99px #ff0000,
+        -160px -150px 0 -99px #ff0000,
+        -220px -220px 0 -99px #ff0000;
+}
+
+
+/* =========================================================
+   4. MAIN CARD
+   ========================================================= */
+
+.checker-card {
+    position: relative;
+    z-index: 2;
+
+    width: min(920px, 100%);
+
+    padding: 48px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(7, 13, 21, 0.98),
+            rgba(2, 6, 11, 0.98)
+        );
+
+    border: 1px solid rgba(255, 40, 40, 0.6);
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 0 35px rgba(255, 0, 0, 0.08),
+        inset 0 0 35px rgba(255, 0, 0, 0.02);
+
+    backdrop-filter: blur(10px);
+}
+
+
+/* =========================================================
+   5. HEADER
+   ========================================================= */
+
+.header-section {
+    text-align: center;
+    margin-bottom: 42px;
+}
+
+.shield-icon {
+    width: 72px;
+    height: 72px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid #ff3434;
+
+    border-radius: 50%;
+
+    background: rgba(255, 0, 0, 0.06);
+
+    box-shadow:
+        0 0 15px rgba(255, 0, 0, 0.4),
+        0 0 35px rgba(255, 0, 0, 0.15);
+
+    font-size: 30px;
+}
+
+.header-section h1 {
+    font-size: clamp(28px, 4vw, 48px);
+
+    letter-spacing: 2px;
+
+    font-weight: 800;
+
+    margin-bottom: 14px;
+}
+
+.header-section h1 span {
+    color: #ff3030;
+
+    text-shadow:
+        0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+.header-section p {
+    color: #9ba9ba;
+
+    font-size: 16px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   6. PASSWORD INPUT
+   ========================================================= */
+
+.password-section {
+    margin-bottom: 24px;
+}
+
+.password-section label {
+    display: block;
+
+    margin-bottom: 12px;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    color: #ffffff;
+}
+
+.password-input-container {
+    display: flex;
+
+    width: 100%;
+
+    border: 1px solid #ff3030;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    background: #050b12;
+
+    transition: 0.3s ease;
+}
+
+.password-input-container:focus-within {
+    box-shadow:
+        0 0 0 2px rgba(255, 0, 0, 0.1),
+        0 0 20px rgba(255, 0, 0, 0.18);
+}
+
+.password-input-container input {
+    flex: 1;
+
+    min-width: 0;
+
+    padding: 17px 18px;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    font-size: 16px;
+}
+
+.password-input-container input::placeholder {
+    color: #657384;
+}
+
+.toggle-password {
+    width: 65px;
+
+    border: none;
+    border-left: 1px solid #26303c;
+
+    background: #081019;
+
+    color: #a9b7c7;
+
+    cursor: pointer;
+
+    font-size: 21px;
+
+    transition: 0.25s ease;
+}
+
+.toggle-password:hover {
+    color: #ffffff;
+
+    background: #101923;
+}
+
+.password-hint {
+    text-align: right;
+
+    margin-top: 8px;
+
+    color: #8190a0;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   7. CHECK BUTTON
+   ========================================================= */
+
+.check-button {
+    width: 100%;
+
+    padding: 17px;
+
+    border: 1px solid #ff5151;
+
+    border-radius: 9px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ff3434,
+            #bd0808
+        );
+
+    color: #ffffff;
+
+    font-size: 16px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 20px rgba(255, 0, 0, 0.25);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        filter 0.2s ease;
+
+    margin-bottom: 28px;
+}
+
+.check-button:hover {
+    transform: translateY(-2px);
+
+    filter: brightness(1.1);
+
+    box-shadow:
+        0 0 28px rgba(255, 0, 0, 0.4);
+}
+
+.check-button:active {
+    transform: translateY(0);
+}
+
+.button-icon {
+    margin-right: 8px;
+}
+
+
+/* =========================================================
+   8. STRENGTH RESULT
+   ========================================================= */
+
+.strength-section {
+    padding: 24px;
+
+    margin-bottom: 26px;
+
+    border: 1px solid #27313d;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(5, 13, 20, 0.95),
+            rgba(3, 8, 14, 0.95)
+        );
+}
+
+.strength-section h2 {
+    font-size: 15px;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 18px;
+
+    color: #e9edf2;
+}
+
+.strength-result {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 18px;
+}
+
+.strength-icon {
+    font-size: 28px;
+}
+
+.strength-text {
+    font-size: 27px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    color: #687585;
+}
+
+
+/* =========================================================
+   9. STRENGTH METER
+   ========================================================= */
+
+.strength-meter {
+    width: 100%;
+
+    height: 12px;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff2424 0%,
+            #ff2424 20%,
+            #ff9f00 40%,
+            #ffe600 60%,
+            #39e45c 80%,
+            #20ff75 100%
+        );
+}
+
+.strength-bar {
+    width: 0%;
+
+    height: 100%;
+
+    border-radius: inherit;
+
+    background: #101820;
+
+    transition: width 0.5s ease;
+}
+
+.strength-message {
+    margin-top: 14px;
+
+    color: #9aa9b8;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   10. PASSWORD CRITERIA
+   ========================================================= */
+
+.criteria-section {
+    margin-bottom: 28px;
+}
+
+.criteria-section h2 {
+    font-size: 15px;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 16px;
+}
+
+.criteria-container {
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap: 12px;
+}
+
+.criteria-card {
+    position: relative;
+
+    min-height: 145px;
+
+    padding: 16px 10px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    border: 1px solid #28333f;
+
+    border-radius: 10px;
+
+    background: #050b11;
+
+    transition:
+        border-color 0.25s ease,
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+.criteria-card:hover {
+    transform: translateY(-3px);
+
+    border-color: #ff3030;
+
+    background: #081019;
+}
+
+.criteria-icon {
+    margin-bottom: 10px;
+
+    color: #aeb9c5;
+
+    font-size: 24px;
+
+    font-weight: 700;
+}
+
+.criteria-card strong {
+    color: #dce4eb;
+
+    font-size: 17px;
+
+    margin-bottom: 5px;
+}
+
+.criteria-card > span {
+    color: #8b98a6;
+
+    font-size: 12px;
+
+    line-height: 1.4;
+}
+
+.criteria-status {
+    margin-top: 10px;
+
+    font-size: 19px;
+
+    color: #657384;
+}
+
+
+/* =========================================================
+   11. SECURITY TIP
+   ========================================================= */
+
+.security-tip {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding-top: 18px;
+
+    border-top: 1px solid #222c37;
+}
+
+.tip-icon {
+    color: #ff3030;
+
+    font-size: 22px;
+}
+
+.security-tip p {
+    color: #93a0ae;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+.security-tip strong {
+    color: #ff3434;
+}
+
+
+/* =========================================================
+   12. RESPONSIVE DESIGN — TABLET
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+    .checker-card {
+        padding: 32px 25px;
+    }
+
+    .criteria-container {
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+}
+
+
+/* =========================================================
+   13. RESPONSIVE DESIGN — MOBILE
+   ========================================================= */
+
+@media (max-width: 560px) {
+
+    .page-container {
+        padding: 20px 12px;
+    }
+
+    .checker-card {
+        padding: 25px 16px;
+
+        border-radius: 13px;
+    }
+
+    .header-section {
+        margin-bottom: 30px;
+    }
+
+    .header-section h1 {
+        font-size: 25px;
+
+        letter-spacing: 1px;
+    }
+
+    .header-section p {
+        font-size: 13px;
+    }
+
+    .shield-icon {
+        width: 60px;
+        height: 60px;
+
+        font-size: 25px;
+    }
+
+    .criteria-container {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .criteria-card {
+        min-height: 130px;
+    }
+
+    .strength-section {
+        padding: 18px;
+    }
+
+    .strength-text {
+        font-size: 23px;
+    }
+
+    .security-tip {
+        align-items: flex-start;
+    }
+}
+
+
+/* =========================================================
+   14. VERY SMALL MOBILE SCREENS
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+    .criteria-container {
+        grid-template-columns: 1fr;
+    }
+
+    .criteria-card {
+        min-height: 110px;
+    }
+
+    .header-section h1 {
+        font-size: 22px;
+    }
+}

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Makes the website responsive on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Password Strength Checker</title>
+
+    <!-- CSS file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ==============================
+         MAIN WEBSITE CONTAINER
+         ============================== -->
+
+    <main class="page-container">
+
+        <!-- Decorative cybersecurity background elements -->
+        <div class="background-decoration left-decoration"></div>
+        <div class="background-decoration right-decoration"></div>
+
+
+        <!-- ==============================
+             MAIN PASSWORD CHECKER CARD
+             ============================== -->
+
+        <section class="checker-card">
+
+            <!-- ==============================
+                 HEADER
+                 ============================== -->
+
+            <header class="header-section">
+
+                <!-- Shield icon -->
+                <div class="shield-icon" aria-hidden="true">
+                    <span>🔒</span>
+                </div>
+
+                <h1>
+                    PASSWORD STRENGTH
+                    <span>CHECKER</span>
+                </h1>
+
+                <p>
+                    Check the strength of your password
+                    and make it more secure
+                </p>
+
+            </header>
+
+
+            <!-- ==============================
+                 PASSWORD INPUT SECTION
+                 ============================== -->
+
+            <section class="password-section">
+
+                <label for="password">
+                    Enter Password
+                </label>
+
+                <div class="password-input-container">
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        autocomplete="new-password"
+                        aria-label="Enter your password"
+                    >
+
+                    <!-- Show / Hide Password Button -->
+                    <button
+                        type="button"
+                        id="togglePassword"
+                        class="toggle-password"
+                        aria-label="Show or hide password"
+                    >
+                        👁
+                    </button>
+
+                </div>
+
+                <p class="password-hint">
+                    Minimum 8 characters
+                </p>
+
+            </section>
+
+
+            <!-- ==============================
+                 CHECK PASSWORD BUTTON
+                 ============================== -->
+
+            <button
+                type="button"
+                id="checkPassword"
+                class="check-button"
+            >
+
+                <span class="button-icon">🛡</span>
+
+                CHECK PASSWORD
+
+            </button>
+
+
+            <!-- ==============================
+                 PASSWORD STRENGTH RESULT
+                 ============================== -->
+
+            <section
+                class="strength-section"
+                aria-live="polite"
+            >
+
+                <h2>STRENGTH</h2>
+
+                <div class="strength-result">
+
+                    <span
+                        id="strengthIcon"
+                        class="strength-icon"
+                    >
+                        🛡
+                    </span>
+
+                    <span
+                        id="strengthText"
+                        class="strength-text"
+                    >
+                        —
+                    </span>
+
+                </div>
+
+
+                <!-- Strength meter -->
+
+                <div
+                    class="strength-meter"
+                    aria-label="Password strength meter"
+                >
+
+                    <div
+                        id="strengthBar"
+                        class="strength-bar"
+                    ></div>
+
+                </div>
+
+
+                <!-- Result message -->
+
+                <p
+                    id="strengthMessage"
+                    class="strength-message"
+                >
+                    Enter a password to check its strength.
+                </p>
+
+            </section>
+
+
+            <!-- ==============================
+                 PASSWORD CRITERIA
+                 ============================== -->
+
+            <section class="criteria-section">
+
+                <h2>PASSWORD CRITERIA</h2>
+
+
+                <div class="criteria-container">
+
+
+                    <!-- 8+ Characters -->
+
+                    <div
+                        class="criteria-card"
+                        id="lengthCriteria"
+                    >
+
+                        <div class="criteria-icon">
+                            🔒
+                        </div>
+
+                        <strong>8+</strong>
+
+                        <span>
+                            Characters
+                        </span>
+
+                        <div
+                            class="criteria-status"
+                            aria-label="Length requirement status"
+                        >
+                            ○
+                        </div>
+
+                    </div>
+
+
+                    <!-- Uppercase -->
+
+                    <div
+                        class="criteria-card"
+                        id="uppercaseCriteria"
+                    >
+
+                        <div class="criteria-icon">
+                            A
+                        </div>
+
+                        <strong>A</strong>
+
+                        <span>
+                            Uppercase
+                            Letters
+                        </span>
+
+                        <div
+                            class="criteria-status"
+                            aria-label="Uppercase requirement status"
+                        >
+                            ○
+                        </div>
+
+                    </div>
+
+
+                    <!-- Lowercase -->
+
+                    <div
+                        class="criteria-card"
+                        id="lowercaseCriteria"
+                    >
+
+                        <div class="criteria-icon">
+                            a
+                        </div>
+
+                        <strong>a</strong>
+
+                        <span>
+                            Lowercase
+                            Letters
+                        </span>
+
+                        <div
+                            class="criteria-status"
+                            aria-label="Lowercase requirement status"
+                        >
+                            ○
+                        </div>
+
+                    </div>
+
+
+                    <!-- Numbers -->
+
+                    <div
+                        class="criteria-card"
+                        id="numberCriteria"
+                    >
+
+                        <div class="criteria-icon">
+                            1
+                        </div>
+
+                        <strong>1</strong>
+
+                        <span>
+                            Numbers
+                        </span>
+
+                        <div
+                            class="criteria-status"
+                            aria-label="Number requirement status"
+                        >
+                            ○
+                        </div>
+
+                    </div>
+
+
+                    <!-- Special Characters -->
+
+                    <div
+                        class="criteria-card"
+                        id="specialCriteria"
+                    >
+
+                        <div class="criteria-icon">
+                            !@#
+                        </div>
+
+                        <strong>!@#</strong>
+
+                        <span>
+                            Special
+                            Characters
+                        </span>
+
+                        <div
+                            class="criteria-status"
+                            aria-label="Special character requirement status"
+                        >
+                            ○
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==============================
+                 SECURITY TIP
+                 ============================== -->
+
+            <footer class="security-tip">
+
+                <span class="tip-icon">
+                    🛡
+                </span>
+
+                <p>
+                    <strong>Tip:</strong>
+                    Use a mix of letters, numbers,
+                    and symbols to make your password stronger.
+                </p>
+
+            </footer>
+
+        </section>
+
+    </main>
+
+
+    <!-- JavaScript file -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
