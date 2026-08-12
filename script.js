@@ -103,7 +103,7 @@ checkPasswordButton.addEventListener("click", async function () {
     try {
 
         const response = await fetch(
-            "https://secure-password-checker.onrender.com/api/check-password",
+          "https://secure-password-checker-2.onrender.com/api/check-password",
             {
                 method: "POST",
 
